@@ -1,0 +1,38 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <form method="POST" action='@Url.Action("GuardarCurso","Home")'>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Titulo del curso</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Coloque aqui el titulo del curso" name="Nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Especialidad</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="IdEspecialidad" required>
+                  @foreach (Especialidad esp in ViewBag.Especialidades)
+                  {
+                      <option value="@esp.IdEspecialidad">@esp.Nombre</option>
+                  }
+              </select>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Descripcion del curso</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="Descripcion" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Imagen del curso</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese la URL de la imagen del curso" name="Imagen" required>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Link de Youtube del curso</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese la URL de la imagen del curso" name="UrlCurso" required>
+        </div>
+
+        <button type="Submit" class="btn btn-primary" style="color: white;">Guardar curso</a>
+    </form>
+</div>

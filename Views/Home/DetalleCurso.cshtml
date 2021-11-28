@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<body>
+    <div class="container-fluid">
+        <div class="row" style="display:flex; align-items: center; justify-content: center; margin-bottom:1rem;">
+            <div class="card mb-3" style="max-width: 750px;">
+                <div class="row no-gutters">
+                  <div class="col-md-4">
+                    <img src="@ViewBag.InfoCurso.Imagen" style="width: 21rem;" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body" style="margin-left: 10rem;">
+                      <h5 class="card-title">@ViewBag.InfoCurso.Nombre</h5>
+                      <p class="card-text">@ViewBag.InfoCurso.Descripcion</p>
+                      
+                    </div>
+                  </div>
+                </div>
+            </div>
+            @Html.Raw(ViewBag.InfoCurso.UrlCurso)
+          
+            
+        </div> 
+        <div class="row" style="display:flex; align-items: center; justify-content: center;">
+          <a class="btn btn-warning" href='@Url.Action("Calificar","Home",new{IdCurso=@ViewBag.InfoCurso.IdCurso,LeGusta="True"})'>
+            <img src="/media/like.png" style="width: 3rem;">
+            <h4>@ViewBag.InfoCurso.MeGusta</h4>
+          </a>
+          <a class="btn btn-warning" style="margin-left:1rem;" href='@Url.Action("Calificar","Home",new{IdCurso=@ViewBag.InfoCurso.IdCurso,LeGusta="False"})'>
+            <img src="/media/dislike.png" style="width: 3rem;">
+            <h4>@ViewBag.InfoCurso.NoMeGusta</h4>
+          </a>
+        </div>
+    </div>
+</body>

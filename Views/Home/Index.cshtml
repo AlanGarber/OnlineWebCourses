@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+  <div class="container-fluid">
+  <div class="row">
+    @if(ViewBag.Cursos.Count>0){
+      @foreach(Curso cur in ViewBag.Cursos){
+          <div class="card" style="width: 20rem; margin-left:3rem; margin-top:3rem;">
+            <img src="@cur.Imagen" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">@cur.Nombre</h5>
+              <a href='@Url.Action("VerCurso","Home", new {idCurso = cur.IdCurso})' class="btn btn-primary">Mas Informacion</a>
+            </div>
+          </div>
+      }
+    }else{
+      <h2>No hay cursos disponibles para esta especialidad!</h2>
+    }
+  </div></div>
+  <div style="margin-top: 10%">
+    @foreach(Especialidad esp in ViewBag.ListaEspecialidades){
+      <a type="button" class="btn btn-primary" style="color: white;" href='@Url.Action("MostrarCursosxEspecialidad","Home",new{IdEspecialidad=@esp.IdEspecialidad})'>@esp.Nombre</a>
+    }
+    <a type="button" class="btn btn-success" style="color: white;" href='@Url.Action("AgregarCurso","Home")'>Agregar Curso</a><br><br>
+    <a type="button" class="btn btn-primary" style="color: white;" href='@Url.Action("Index","Home")'>Todos los cursos</a>
+  </div>
+</div>
